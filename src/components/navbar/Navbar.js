@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <div>
       <IconContext.Provider value={{ color: "undefined" }}>
-        <div className="navbar">
+        <div className="navbars">
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
@@ -25,20 +25,15 @@ function Navbar() {
               className="search__input"
               type="text"
               placeholder="Tìm kiếm bài hát, ca sĩ. . ."
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
             />
             <button className="button-21">
-              <FaIcons.FaSearch/>
+              <FaIcons.FaSearch />
             </button>
           </div>
-          <div>
-            <ul className="navbar-nav flex-row">
-              <li className="nav-item me-3 me-lg-3">
-                <Link to="/login">Đăng nhập</Link>
-              </li>
-              <li className="nav-item me-3 me-lg-3">
-                <Link to="/registration">Đăng ký</Link>
-              </li>
-            </ul>
+          <div className="btn-login">
+            <Link to="/login">Đăng nhập</Link>
           </div>
         </div>
         <nav className={siderbar ? "nav-menu active" : "nav-menu"}>
