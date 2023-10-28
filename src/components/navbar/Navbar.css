@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 /* Navbar CSS */
-.navbar {
+.navbars {
   background-color: #ffffff;
   height: 80px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
 }
 
 .menu-bars {
@@ -162,4 +164,22 @@ span {
   justify-content: center;
   height: 45px;
   position: relative;
+}
+
+/* nut login */
+.btn-login {
+  display: flex;
+  width: 100px;
+  height: 45px;
+  background: linear-gradient(144deg, rgba(34,193,195,1) 0%, rgba(42,90,199,1) 100%);
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-weight: 550;
+}
+
+.btn-login a {
+  color: white;
+  text-decoration: none;
 }
