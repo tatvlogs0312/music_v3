@@ -4,9 +4,12 @@ import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { Sidebar } from "../siderbar/Sidebar";
+import "./Navbar.css";
 
 function Navbar() {
   const [siderbar, setSidebar] = useState(false);
+
+  const [keyword, setKeyword] = useState("");
 
   const showSidebar = () => setSidebar(!siderbar);
 
@@ -17,6 +20,26 @@ function Navbar() {
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+          <div className="search__bar">
+            <input
+              className="search__input"
+              type="text"
+              placeholder="Tìm kiếm bài hát, ca sĩ. . ."
+            />
+            <button className="button-21">
+              <FaIcons.FaSearch/>
+            </button>
+          </div>
+          <div>
+            <ul className="navbar-nav flex-row">
+              <li className="nav-item me-3 me-lg-3">
+                <Link to="/login">Đăng nhập</Link>
+              </li>
+              <li className="nav-item me-3 me-lg-3">
+                <Link to="/registration">Đăng ký</Link>
+              </li>
+            </ul>
+          </div>
         </div>
         <nav className={siderbar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
