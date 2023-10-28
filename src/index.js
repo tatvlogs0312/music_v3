@@ -7,7 +7,9 @@ import AlbumsPage from "./pages/albumsPage/AlbumsPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import RegistrationPage from "./pages/registrationPage/RegistrationPage";
 import Navbar from "./components/navbar/Navbar";
-import "./APP.css"
+import "./App.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const AppLayout = () => (
   <div>
