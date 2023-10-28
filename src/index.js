@@ -6,6 +6,7 @@ import ArtistPage from "./pages/artistPage/ArtistPage";
 import AlbumsPage from "./pages/albumsPage/AlbumsPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import RegistrationPage from "./pages/registrationPage/RegistrationPage";
+import ForgotPasswordPage from "./pages/forgotpasswordPage/ForgotpasswordPage";
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -37,9 +38,14 @@ const router = createBrowserRouter([
         element: <LoginPage />,
       },
       {
+        path: "/forgotpassword",
+        element: <ForgotPasswordPage />,
+      },
+      {
         path: "/registration",
         element: <RegistrationPage />,
       },
+
     ],
   },
 ]);

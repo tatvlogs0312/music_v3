@@ -14,7 +14,7 @@ function LoginPage() {
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-9 col-lg-6 col-xl-5">
               <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                src="https://images.baodantoc.vn/uploads/2022/Th%C3%A1ng_10/Ng%C3%A0y_20/Nga/117578B%E1%BA%A3o-v%E1%BB%87-b%E1%BA%A3n-quy%E1%BB%81n-ch%C3%ADnh-l%C3%A0-b%E1%BA%A3o-v%E1%BB%87-n%E1%BB%81n-%C3%A2m-nh%E1%BA%A1c%2C-b%E1%BA%A3o-v%E1%BB%87-ng%C6%B0%E1%BB%9Di-s%C3%A1ng-t%E1%BA%A1o-v%C3%A0-%C4%91%C6%B0a-c%C3%B4ng-nghi%E1%BB%87p-%C3%A2m-nh%E1%BA%A1c-ph%E1%BB%A7-s%C3%B3ng-kh%E1%BA%AFp-th%E1%BA%BF-gi%E1%BB%9Bi-(%E1%BA%A3nh-minh-h%E1%BB%8Da).jpg"
                 className="img-fluid"
                 alt="Sample image"
               />
@@ -79,7 +79,7 @@ function LoginPage() {
               </div>
 
               <div className="d-flex justify-content-lg-end align-items-center">
-                <Link className="text-body" to="#">
+                <Link className="text-body" to="/forgotpassword">
                   Forgot password?
                 </Link>
               </div>
