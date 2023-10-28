@@ -1,87 +1,100 @@
 import React from "react";
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+import "./Login.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="login-page">
-      <section class="vh-100">
-        <div class="container-fluid h-custom">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-
-            <div class="col-md-9 col-lg-6 col-xl-5">
+      <section className="vh-100">
+        <div className="container-fluid h-custom">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-md-9 col-lg-6 col-xl-5">
               <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                  class="img-fluid"
-                  alt="Sample image"
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                className="img-fluid"
+                alt="Sample image"
               />
             </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form action="@{/login}" method="post">
-                <div
-                    class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start"
+            <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-floating mx-1"
                 >
-                  <p class="lead fw-normal mb-0 me-3">Sign in with</p>
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                    
-                  </button>
-      
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                  </button>
-      
-                  <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-linkedin-in"></i>
-                  </button>
-                </div>
-      
-                <div class="divider d-flex align-items-center my-4">
-                  <p class="text-center fw-bold mx-3 mb-0">Or</p>
-                </div>
-      
+                  <i className="fab fa-facebook-f"></i>
+                </button>
 
-                <div class="form-outline mb-4">
-                  <input
-                      type="email"
-                      id="form3Example3"
-                      class="form-control form-control-lg"
-                      placeholder="Enter a valid email address"
-                      name="username"
-                  />
-                  <label class="form-label" for="form3Example3"
-                  >Email</label
-                  >
-                </div>
-      
+                <button
+                  type="button"
+                  className="btn btn-primary btn-floating mx-1"
+                >
+                  <i className="fab fa-twitter"></i>
+                </button>
 
-                <div class="form-outline mb-3">
-                  <input
-                      type="password"
-                      id="form3Example4"
-                      class="form-control form-control-lg"
-                      placeholder="Enter password"
-                      name="password"
-                  />
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
-      
-                <div class="d-flex justify-content-lg-end align-items-center">
-                  <a href="@{/reset}" class="text-body">Forgot password?</a>
-                </div>
-      
-                <div class="text-center text-lg-start mt-4 pt-2">
-                  <button
-                      type="submit"
-                      class="btn btn-primary btn-lg"
-                  >
-                    Đăng nhập
-                  </button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">
-                    Bạn chưa có tài khoản?
-                    <a href="@{/register}" class="link-danger">Đăng ký</a>
-                  </p>
-                </div>
-              </form>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-floating mx-1"
+                >
+                  <i className="fab fa-linkedin-in"></i>
+                </button>
+              </div>
+
+              <div className="divider d-flex align-items-center my-4">
+                <p className="text-center fw-bold mx-3 mb-0">Or</p>
+              </div>
+
+              <div className="form-outline mb-4">
+                <label className="form-label" for="form3Example3">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="form3Example3"
+                  className="form-control form-control-lg"
+                  placeholder="Enter a valid email address"
+                  name="username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <div className="form-outline mb-3">
+                <label className="form-label" for="form3Example4">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="form3Example4"
+                  className="form-control form-control-lg"
+                  placeholder="Enter password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+
+              <div className="d-flex justify-content-lg-end align-items-center">
+                <Link className="text-body" to="#">
+                  Forgot password?
+                </Link>
+              </div>
+
+              <div className="text-center text-lg-start mt-4 pt-2">
+                <button type="submit" className="btn btn-primary btn-lg">
+                  Đăng nhập
+                </button>
+                <p className="small fw-bold mt-2 pt-1 mb-0">
+                  Bạn chưa có tài khoản?
+                  <Link className="link-danger" to="/registration">
+                    Đăng ký
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
         </div>

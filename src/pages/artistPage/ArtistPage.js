@@ -1,9 +1,13 @@
 import React from "react";
+import Navbar from "../../components/navbar/Navbar";
 
 function ArtistPage() {
   return (
-    <div className="artist-page">
-      <h1>ArtistPage</h1>
+    <div>
+      <Navbar />
+      <div className="artist-page">
+        <h1>ArtistPage</h1>
+      </div>
     </div>
   );
 }
