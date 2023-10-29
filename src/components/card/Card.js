@@ -11,7 +11,7 @@ export default function Card(props) {
           <img src={`${baseURL}/file/image/alums.png`} alt="ảnh" />
         </div>
         <div class="text">
-          <h2>{props.songName || ''}</h2>
+          <h2>{props.songName || 'UNKNOW'}</h2>
         </div>
       </section>
     );
