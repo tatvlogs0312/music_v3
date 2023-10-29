@@ -7,31 +7,31 @@ function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
 
   return (
-    <div class="forgotpasswordPage">
-      <div class="card text-center">
-        <div class="card-header h5 text-white bg-primary">Password Reset</div>
-        <div class="card-body px-5">
+    <div className="forgotpasswordPage">
+      <div className="card text-center">
+        <div className="card-header h5 text-white bg-primary">Password Reset</div>
+        <div className="card-body px-5">
           <form action="" method="post">
-            <p class="card-text py-2">
+            <p className="card-text py-2">
               Enter your email address and we will send you an email with
               instructions to reset your password.
             </p>
-            <div class="form-outline">
+            <div className="form-outline">
               <input
                 type="email"
                 id="typeEmail"
-                class="form-control my-3"
+                className="form-control my-3"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <label class="form-label" for="typeEmail">
+              <label className="form-label" for="typeEmail">
                 Email input
               </label>
             </div>
-            <button class="btn btn-primary w-100" type="submit">
+            <button className="btn btn-primary w-100" type="submit">
               Reset password
             </button>
-            <div class="d-flex justify-content-between mt-4">
+            <div className="d-flex justify-content-between mt-4">
                 <Link className="text-body" to="/login">
                     Login
                 </Link>
