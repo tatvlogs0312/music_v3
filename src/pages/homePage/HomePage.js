@@ -2,23 +2,33 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Card from "../../components/card/Card";
 import axios from "axios";
-import './HomePage.css'
+import "./HomePage.css"; 
 
 const baseURL = "http://localhost:8080";
 
 function HomePage() {
   const [songs, setSongs] = useState([]);
+  const [artists, setArtists] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/song`)
+      .get(`${baseURL}/song/limit?size=12`)
       .then((res) => {
-        console.log(res.data);
-        setSongs(res.data)
+        setSongs(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/artist/limit`)
+      .then((res) => {
+        console.log(res);
+         setArtists(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  
   return (
     <div>
       <Navbar />
@@ -28,10 +38,15 @@ function HomePage() {
           <div className="row">
             {songs.map((x) => (
               <div className="col-md-2" key={x.id}>
-                <Card songName={x.songName} img={x.urlImage} />
+                <Card song={x} />
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="artist">
+          <div className="music-new-title">Ca sĩ hot hiện nay</div>
+
         </div>
       </div>
     </div>
