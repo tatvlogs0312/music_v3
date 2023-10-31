@@ -8,8 +8,18 @@
   font-family: "Lato", sans-serif;
 }
 
+.main {
+  display: flex;
+}
+
+.main-right {
+  margin-left: 15%;
+  width: 85%;
+}
+
 .albums-page,
 .artist-page,
 .home-page {
-  padding-top: 100px;
+  margin-top: 60px;
+  padding: 20px;
 }

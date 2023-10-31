@@ -21,7 +21,6 @@ function ArtistPage() {
 
   return (
     <div>
-      <Navbar />
       <div className="artist-page">
         <div className="artist-list">
           <div className="music-new-title">Ca sĩ - Artist</div>

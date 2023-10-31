@@ -21,7 +21,6 @@ function AlbumsPage() {
 
   return (
     <div>
-      <Navbar />
       <div className="albums-page">
         <div className="albums-list">
           <div className="albums-new-title">Albums</div>
