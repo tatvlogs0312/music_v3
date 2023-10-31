@@ -10,10 +10,16 @@ import ForgotPasswordPage from "./pages/forgotpasswordPage/ForgotpasswordPage";
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Navbar from "./components/navbar/Navbar";
+import Header from "./components/header/Header";
 
 const AppLayout = () => (
-  <div>
-    <Outlet />
+  <div className="main">
+    <Navbar />
+    <div className="main-right">
+      <Header/>
+      <Outlet />
+    </div>
   </div>
 );
 
@@ -33,20 +39,19 @@ const router = createBrowserRouter([
         path: "/albums",
         element: <AlbumsPage />,
       },
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
-      {
-        path: "/forgotpassword",
-        element: <ForgotPasswordPage />,
-      },
-      {
-        path: "/registration",
-        element: <RegistrationPage />,
-      },
-
     ],
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/forgotpassword",
+    element: <ForgotPasswordPage />,
+  },
+  {
+    path: "/registration",
+    element: <RegistrationPage />,
   },
 ]);
 
