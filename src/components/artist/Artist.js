@@ -7,10 +7,10 @@ const baseURL = "http://localhost:8080";
 export default function Artist(props) {
   return (
     <Link style={{ textDecoration: "none", color: "#000" }}>
-      <section class="card-music">
+      <section class="card-artist">
         <div class="img-holder">
           <img
-            src={`${baseURL}/file/image/${props.artists.avatar}`}
+            src={`${baseURL}/file/image/${props.artists.avatar || ''}`}
             alt="ảnh"
           />
         </div>
