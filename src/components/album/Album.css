@@ -1,0 +1,58 @@
+.card-album {
+    background-color: rgba(160, 160, 160, 0.342);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border-radius: 0.3rem;
+    position: relative;
+    transition: all 0.45s;
+    cursor: pointer;
+    padding: 1rem;
+    margin: 15px 0;
+  }
+  
+  .img-holder {
+    width: 100%;
+  }
+  
+  .img-holder img {
+    width: 150px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.3rem;
+  }
+  
+  .text-name {
+    margin-top: 1rem;
+    line-height: 1;
+    width: 100%;
+  }
+  
+  .text-name h2 {
+    font-size: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+   
+  .play-icon {
+    position: absolute;
+    top: 45%;
+    right: 12%;
+    transform: translateY(10px);
+    filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.4));
+    opacity: 0;
+    transition: all 0.4s;
+  }
+  
+  .card-album:hover .play-icon {
+    opacity: 1;
+    transform: translateY(0);
+    filter: brightness(100%);
+  }
+  
+  .card-album:hover{
+    filter: brightness(75%);
+  }

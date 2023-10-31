@@ -1,0 +1,11 @@
+.albums-list {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .albums-new-title {
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
