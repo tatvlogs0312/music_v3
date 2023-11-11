@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Card from "../../components/card/Card";
 import Artist from "../../components/artist/Artist";
+import Album from "../../components/album/Album";
 import axios from "axios";
 import "./HomePage.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,6 +14,7 @@ function HomePage() {
   const [songs, setSongs] = useState([]);
   const [tops, setTops] = useState([]);
   const [artists, setArtists] = useState([]);
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     axios
@@ -40,6 +42,13 @@ function HomePage() {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/albums/limit?size=6`)
+      .then((res) => setAlbums(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="home-page">
       <div className="music-new">
@@ -47,7 +56,7 @@ function HomePage() {
         <div className="row">
           {songs.map((x) => (
             <div className="col-md-2" key={x.id}>
-              <Card song={x} />
+              <Card song={x} other={songs} />
             </div>
           ))}
         </div>
@@ -79,6 +88,17 @@ function HomePage() {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+
+      <div className="albums">
+        <div className="music-new-title">Albums/Playlist</div>
+        <div className="row">
+          {albums.map((x) => (
+            <div className="col-md-2" key={x.id}>
+              <Album albums={x} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
