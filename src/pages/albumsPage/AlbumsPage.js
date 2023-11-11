@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/navbar/Navbar";
 import axios from "axios";
 import Album from "../../components/album/Album";
 import './AlbumsPage.css'
@@ -13,7 +12,6 @@ function AlbumsPage() {
     axios
       .get(`${baseURL}/albums`)
       .then((res) => {
-        console.log(res.data);
         setAlbums(res.data);
       })
       .catch((err) => console.log(err));

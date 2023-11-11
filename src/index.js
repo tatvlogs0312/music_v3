@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider, useParams } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
 import ArtistPage from "./pages/artistPage/ArtistPage";
 import AlbumsPage from "./pages/albumsPage/AlbumsPage";
@@ -12,6 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from "./components/navbar/Navbar";
 import Header from "./components/header/Header";
+import ArtistInfoPage from "./pages/artistInfoPage/ArtistInfoPage";
+import AlbumsInfoPage from "./pages/albumsInfoPage/AlbumsInfoPage";
+import MusicPage from './pages/musicPage/MusicPage'
 
 const AppLayout = () => (
   <div className="main">
@@ -36,8 +39,20 @@ const router = createBrowserRouter([
         element: <ArtistPage />,
       },
       {
+        path: "/artist/:id",
+        element: <ArtistInfoPage />,
+      },
+      {
         path: "/albums",
         element: <AlbumsPage />,
+      },
+      {
+        path: "/albums/:id",
+        element: <AlbumsInfoPage />,
+      },
+      {
+        path: "/song/:id",
+        element: <MusicPage />,
       },
     ],
   },
