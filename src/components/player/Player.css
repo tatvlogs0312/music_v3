@@ -1,11 +1,6 @@
-
-
 .player {
   width: 300px;
   height: 640px;
-  /* background: linear-gradient(to right, #313234, #2f3031); */
-  /* box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.4); */
-  /* border-radius: 3rem; */
   display: flex;
   flex-direction: column;
   padding: 10px;
