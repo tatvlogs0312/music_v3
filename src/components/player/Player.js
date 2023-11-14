@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Player.css";
 import ReactPlayer from "react-player";
+import axios from "axios";
 
 const baseURL = "http://localhost:8080";
 
-export default function Player({ song }) {
-
+export default function Player({ song, next, prev }) {
+  const audioRef = useRef();
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [play, setPlay] = useState(true);
 
   const getArtist = (song) => {
@@ -22,8 +25,15 @@ export default function Player({ song }) {
   };
 
   useEffect(() => {
-    
-  }, []);
+    axios
+      .put(`${baseURL}/song/update-listen/${song.id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }, [song.id]);
+
+  useEffect(() => {
+    setPlay(true);
+  }, [song.id]);
 
   return (
     <div className="player">
@@ -46,6 +56,10 @@ export default function Player({ song }) {
             <ReactPlayer
               url={`${baseURL}/file/mp3/${song.urlMp3}`}
               playing={play}
+              height={"100%"}
+              width={"100%"}
+              loop={false}
+              onEnded={next}
             />
           </div>
         </div>
@@ -55,16 +69,19 @@ export default function Player({ song }) {
         </div>
       </div>
       <div className="controls">
-        <button className="player-btn prev-btn" type="button">
+        <button className="player-btn prev-btn" type="button" onClick={prev}>
           <i className="fa-solid fa-backward"></i>
         </button>
-        <button className="player-btn play-pause" type="button">
-          <i
-            className={play ? "fa-solid fa-pause" : "fa-solid fa-play"}
-            onClick={() => setPlay(!play)}
-          ></i>
+        <button
+          className="player-btn play-pause"
+          type="button"
+          onClick={() => {
+            setPlay(!play);
+          }}
+        >
+          <i className={play ? "fa-solid fa-pause" : "fa-solid fa-play"}></i>
         </button>
-        <button className="player-btn next-btn" type="button">
+        <button className="player-btn next-btn" type="button" onClick={next}>
           <i className="fa-solid fa-forward"></i>
         </button>
       </div>
