@@ -19,13 +19,13 @@ export default function PlayList({ song }) {
   };
 
   return (
-    <div class="playlist-item">
-      <div class="playlist-item-info">
-        <div class="orther-name-img">
+    <div className="playlist-item">
+      <div className="playlist-item-info">
+        <div className="orther-name-img">
           <img src={`${baseURL}/file/image/${song.urlImage}`} alt="" />
-          <div class="playlist-item-info-name">
-            <div class="playlist-item-song">{song.name || "N/A"}</div>
-            <div class="playlist-item-artist">{getArtist(song) || "N/A"}</div>
+          <div className="playlist-item-info-name">
+            <div className="playlist-item-song">{song.name || "N/A"}</div>
+            <div className="playlist-item-artist">{getArtist(song) || "N/A"}</div>
           </div>
         </div>
         <div>

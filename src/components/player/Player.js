@@ -24,12 +24,16 @@ export default function Player({ song, next, prev }) {
     return artist;
   };
 
-  useEffect(() => {
+  const updateListen = () => {
     axios
       .put(`${baseURL}/song/update-listen/${song.id}`)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
-  }, [song.id]);
+  }
+
+  // useEffect(() => {
+  //   updateListen();
+  // }, [song.id]);
 
   useEffect(() => {
     setPlay(true);
@@ -60,6 +64,7 @@ export default function Player({ song, next, prev }) {
               width={"100%"}
               loop={false}
               onEnded={next}
+              onStart={updateListen}
             />
           </div>
         </div>
