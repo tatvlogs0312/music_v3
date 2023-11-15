@@ -13,11 +13,18 @@ export default function Album(props) {
       <section className="card-album">
         <div className="img-holder">
           <img
-            src={`${baseURL}/file/image/${props.albums.url_image_albums}`}
+            src={`${baseURL}/file/image/${
+              props.albums.url_image_albums || props.albums.urlImageAlbums
+            }`}
             alt="ảnh"
           />
         </div>
-        <div className="text-name" title={props.albums.albums_name || "UNKNOW"}>
+        <div
+          className="text-name"
+          title={
+            props.albums.albums_name || props.albums.albumsName || "UNKNOW"
+          }
+        >
           <h2>{props.albums.albums_name || "UNKNOW"}</h2>
         </div>
       </section>
