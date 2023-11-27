@@ -1,0 +1,34 @@
+.artist-info-page {
+  margin-top: 60px;
+
+}
+
+.artist-info {
+    min-height: 250px;
+    padding: 25px;
+    background-color: rgba(13, 110, 253, 0.25);
+    display: flex;
+    align-items: flex-end;
+}
+
+.artist-avatar img{
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 1px solid white;
+}
+
+.artist-name {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.artist-song-albums {
+    padding: 50px
+}
+
+.artist-albums {
+    margin-top: 50px;
+}

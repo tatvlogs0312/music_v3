@@ -12,13 +12,6 @@ export const Router = [
     isAuthen: false,
   },
   {
-    title: "Music Chart",
-    path: "/",
-    icons: <AiIcons.AiFillHome />,
-    cName: "nav-text",
-    isAuthen: false,
-  },
-  {
     title: "Ca sĩ",
     path: "/artist",
     icons: <AiIcons.AiFillHome />,
