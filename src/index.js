@@ -13,6 +13,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from "./components/navbar/Navbar";
 import Header from "./components/header/Header";
 import ArtistInfoPage from "./pages/artistInfoPage/ArtistInfoPage";
+import ArtistInfoSongPage from "./pages/artistInfoSongPage/ArtistInfoSongPage"
 import AlbumsInfoPage from "./pages/albumsInfoPage/AlbumsInfoPage";
 import MusicPage from './pages/musicPage/MusicPage'
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/artist/:id",
         element: <ArtistInfoPage />,
+      },
+      {
+        path: "/artist/:id/song",
+        element: <ArtistInfoSongPage />
       },
       {
         path: "/albums",
