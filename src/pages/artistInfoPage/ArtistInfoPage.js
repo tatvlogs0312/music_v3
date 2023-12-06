@@ -53,7 +53,7 @@ export default function ArtistInfoPage() {
               {songs && (
                 <div className="row">
                   {songs.map((song) => (
-                    <div className="col-md-4" key={song.id}>
+                    <div className="col-md-6" key={song.id}>
                       <div style={{ fontSize: "20px" }}>
                         <PlayList song={song} />
                       </div>
