@@ -12,6 +12,10 @@
   cursor: pointer;
 }
 
+.playlist-item a {
+  text-decoration: none;
+}
+
 .playlist-active {
 
 }

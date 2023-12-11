@@ -39,6 +39,8 @@ export default function Player({ song, next, prev }) {
     setPlay(true);
   }, [song.id]);
 
+  console.log(song);
+
   return (
     <div className="player">
       <div className="player-body">

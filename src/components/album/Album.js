@@ -25,7 +25,9 @@ export default function Album(props) {
             props.albums.albums_name || props.albums.albumsName || "UNKNOW"
           }
         >
-          <h2>{props.albums.albums_name || "UNKNOW"}</h2>
+          <h2>
+            {props.albums.albums_name || props.albums.albumsName || "UNKNOW"}
+          </h2>
         </div>
       </section>
     </Link>
