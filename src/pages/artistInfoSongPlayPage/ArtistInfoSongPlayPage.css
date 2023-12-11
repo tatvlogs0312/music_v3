@@ -1,0 +1,24 @@
+.music-list {
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+.item-playlist {
+    margin-left: 100px;
+}
+
+.playlist-title {
+    font-size: 25px;
+    font-weight: 600;
+    color: #3eb2fd;
+    margin-top: 25px;
+}
+
+.item-player {
+    width: 30%;
+}
+
+.item-playlist {
+    width: 70%;
+}

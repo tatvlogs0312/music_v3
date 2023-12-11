@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import PlayList from "../../components/playlist/PlayList";
 import Album from "../../components/album/Album";
+import { Link } from "react-router-dom";
 
 const baseURL = "http://localhost:8080";
 
@@ -49,13 +50,24 @@ export default function ArtistInfoPage() {
           </div>
           <div className="artist-song-albums">
             <div className="artist-songs">
-              <div style={{ fontSize: "20px" }}>Bài hát nổi bật</div>
+              <div className="artist-songs-title">
+                <div style={{ fontSize: "20px" }}>Bài hát nổi bật</div>
+                <div>
+                  <Link to={`/artist/${artist.id}/song`}>Xem tất cả</Link>
+                </div>
+              </div>
               {songs && (
                 <div className="row">
                   {songs.map((song) => (
                     <div className="col-md-6" key={song.id}>
                       <div style={{ fontSize: "20px" }}>
-                        <PlayList song={song} />
+                        <Link
+                          style={{ textDecoration: "none" }}
+                          to={`/artist/${artist.id}/song/play`}
+                          state={{ songId: song.id, songs: songs }}
+                        >
+                          <PlayList song={song} />
+                        </Link>
                       </div>
                     </div>
                   ))}

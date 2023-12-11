@@ -1,27 +1,33 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, Outlet, RouterProvider, useParams } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  useParams,
+} from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
 import ArtistPage from "./pages/artistPage/ArtistPage";
 import AlbumsPage from "./pages/albumsPage/AlbumsPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import RegistrationPage from "./pages/registrationPage/RegistrationPage";
 import ForgotPasswordPage from "./pages/forgotpasswordPage/ForgotpasswordPage";
-import "./App.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import Navbar from "./components/navbar/Navbar";
 import Header from "./components/header/Header";
 import ArtistInfoPage from "./pages/artistInfoPage/ArtistInfoPage";
-import ArtistInfoSongPage from "./pages/artistInfoSongPage/ArtistInfoSongPage"
+import ArtistInfoSongPage from "./pages/artistInfoSongPage/ArtistInfoSongPage";
 import AlbumsInfoPage from "./pages/albumsInfoPage/AlbumsInfoPage";
-import MusicPage from './pages/musicPage/MusicPage'
+import MusicPage from "./pages/musicPage/MusicPage";
+import ArtistInfoSongPlayPage from "./pages/artistInfoSongPlayPage/ArtistInfoSongPlayPage";
 
 const AppLayout = () => (
   <div className="main">
     <Navbar />
     <div className="main-right">
-      <Header/>
+      <Header />
       <Outlet />
     </div>
   </div>
@@ -45,7 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/artist/:id/song",
-        element: <ArtistInfoSongPage />
+        element: <ArtistInfoSongPage />,
+      },
+      {
+        path: "/artist/:id/song/play",
+        element: <ArtistInfoSongPlayPage />
       },
       {
         path: "/albums",
