@@ -13,7 +13,9 @@ export default function Artist(props) {
       <section className="card-artist">
         <div className="img-holder">
           <img
-            src={`${baseURL}/file/image/${props.artists.avatar || ""}`}
+            src={`${baseURL}/file/image/${
+              props.artists.avatar || props.artists.urlAvatar || ""
+            }`}
             alt="ảnh"
           />
         </div>

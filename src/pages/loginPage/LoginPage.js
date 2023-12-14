@@ -1,14 +1,51 @@
 import React from "react";
 import "./Login.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Notification from "../../components/notification/Notification";
+
+const baseURL = "http://localhost:8080";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState(null);
+  const navigate = useNavigate(); 
+
+
+  const login = () => {
+    axios
+      .post(`${baseURL}/user/login`, {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        localStorage.setItem("token", res.data.accessToken);
+        axios
+          .get(`${baseURL}/user/me`, {
+            headers: {
+              Authorization: res.data.accessToken,
+            },
+          })
+          .then((res1) => {
+            localStorage.setItem("me", JSON.stringify(res1.data));
+            navigate("/");
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => {
+        setErr(err.response.data.msg);
+      });
+  };
+
+  setInterval(() => {
+    setErr(null);
+  }, 5000);
 
   return (
     <div className="login-page">
+      {err && <Notification msg={err} type="error" />}
       <section className="vh-100">
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -85,7 +122,11 @@ function LoginPage() {
               </div>
 
               <div className="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" className="btn btn-primary btn-lg">
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg"
+                  onClick={login}
+                >
                   Đăng nhập
                 </button>
                 <p className="small fw-bold mt-2 pt-1 mb-0">
