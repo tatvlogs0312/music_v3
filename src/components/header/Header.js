@@ -13,6 +13,8 @@ function Header() {
   const [disabled, setDisable] = useState(false);
   const [isAuth, setIsAuth] = useState(localStorage.getItem("me") !== null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (typeof keyword === "string" && keyword.trim().length !== 0) {
       setDisable(false);
@@ -25,6 +27,7 @@ function Header() {
     localStorage.removeItem("token");
     localStorage.removeItem("me");
     setIsAuth(false);
+    navigate("/");
   }
 
   const getAvatar = () => {

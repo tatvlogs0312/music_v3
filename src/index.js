@@ -23,6 +23,7 @@ import AlbumsInfoPage from "./pages/albumsInfoPage/AlbumsInfoPage";
 import MusicPage from "./pages/musicPage/MusicPage";
 import ArtistInfoSongPlayPage from "./pages/artistInfoSongPlayPage/ArtistInfoSongPlayPage";
 import SearchPage from "./pages/searchPage/SearchPage";
+import HistoryPage from "./pages/historyPage/HistoryPage";
 
 const AppLayout = () => (
   <div className="main">
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
         path: "/search",
         element: <SearchPage />,
       },
+      {
+        path: "/history",
+        element: <HistoryPage />,
+      }
     ],
   },
   {
