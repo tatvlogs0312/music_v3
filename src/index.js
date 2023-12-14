@@ -22,6 +22,7 @@ import ArtistInfoSongPage from "./pages/artistInfoSongPage/ArtistInfoSongPage";
 import AlbumsInfoPage from "./pages/albumsInfoPage/AlbumsInfoPage";
 import MusicPage from "./pages/musicPage/MusicPage";
 import ArtistInfoSongPlayPage from "./pages/artistInfoSongPlayPage/ArtistInfoSongPlayPage";
+import SearchPage from "./pages/searchPage/SearchPage";
 
 const AppLayout = () => (
   <div className="main">
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/artist/:id/song/play",
-        element: <ArtistInfoSongPlayPage />
+        element: <ArtistInfoSongPlayPage />,
       },
       {
         path: "/albums",
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/song/:id",
         element: <MusicPage />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       },
     ],
   },
