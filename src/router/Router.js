@@ -25,4 +25,11 @@ export const Router = [
     cName: "nav-text",
     isAuthen: false,
   },
+  {
+    title: "Gần đây",
+    path: "/history",
+    icons: <AiIcons.AiFillHome />,
+    cName: "nav-text",
+    isAuthen: true,
+  },
 ];
