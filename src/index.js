@@ -24,6 +24,7 @@ import MusicPage from "./pages/musicPage/MusicPage";
 import ArtistInfoSongPlayPage from "./pages/artistInfoSongPlayPage/ArtistInfoSongPlayPage";
 import SearchPage from "./pages/searchPage/SearchPage";
 import HistoryPage from "./pages/historyPage/HistoryPage";
+import ChangepasswordPage from "./pages/changepasswordPage/ChangepasswordPage";
 
 const AppLayout = () => (
   <div className="main">
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "/history",
         element: <HistoryPage />,
+      },
+      {
+        path: "/changepassword",
+        element: <ChangepasswordPage />,
       }
     ],
   },
