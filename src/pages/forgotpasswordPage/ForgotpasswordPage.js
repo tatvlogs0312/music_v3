@@ -23,7 +23,7 @@ function ForgotPasswordPage() {
   const sendMail = () => {
     axios
       .put(`${baseURL}/user/forgot-password`, {
-        email: email
+        email: email,
       })
       .then((res) => {
         setStatus({
@@ -38,11 +38,11 @@ function ForgotPasswordPage() {
           type: "error",
         });
       });
-  };
 
-  setInterval(() => {
-    setStatus(null);
-  }, 5000);
+    setTimeout(() => {
+      setStatus(null);
+    }, 5000);
+  };
 
   return (
     <div className="forgotpasswordPage">
@@ -52,7 +52,6 @@ function ForgotPasswordPage() {
           Password Reset
         </div>
         <div className="card-body px-5">
-          {" "}
           <p className="card-text py-2">
             Enter your email address and we will send you an email with
             instructions to reset your password.
