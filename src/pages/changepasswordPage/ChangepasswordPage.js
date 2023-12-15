@@ -8,6 +8,7 @@ function ChangepasswordPage() {
   const [repairnewpassword, setRepairNewPassword] = useState("");
   return (
     <div>
+
       <section className="vh-100">
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -74,6 +75,7 @@ function ChangepasswordPage() {
           </div>
         </div>
       </section>
+      
     </div>
   );
 }
