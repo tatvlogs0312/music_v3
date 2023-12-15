@@ -68,6 +68,19 @@ export default function Player({ song, next, prev }) {
     updateListen();
   }, []);
 
+  useEffect(() => {
+    if (localStorage.getItem("me") !== null) {
+      const user = JSON.parse(localStorage.getItem("me"));
+      axios
+        .put(`${baseURL}/user/update-history`, {
+          idSong: song.id,
+          idUser: user.id,
+        })
+        .then((res) => {})
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
   return (
     <div className="player">
       <div className="player-body">

@@ -1,14 +1,54 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Notification from "../../components/notification/Notification";
+import axios from "axios";
+
+const baseURL = "http://localhost:8080";
 
 function ChangepasswordPage() {
   const [password, setPassword] = useState("");
   const [newpassword, setNewPassword] = useState("");
   const [repairnewpassword, setRepairNewPassword] = useState("");
+  const [status, setStatus] = useState(null);
+
+  const change = () => {
+    if (newpassword !== repairnewpassword) {
+      setStatus({
+        msg: "Mật khẩu không trùng khớp",
+        type: "error",
+      });
+    } else {
+      const user = JSON.parse(localStorage.getItem("me"));
+      axios
+        .put(`${baseURL}/user/forgot-password`, {
+          oldPassword: password,
+          newPassword: newpassword,
+          email: user.mail,
+        })
+        .then((res) => {
+          setStatus({
+            msg: "Đổi mật khẩu thành công",
+            type: "success",
+          });
+        })
+        .catch((err) => {
+          setStatus({
+            msg: err.response.data.msg,
+            type: "error",
+          });
+        });
+
+      setTimeout(() => {
+        setStatus(null);
+      }, 5000);
+    }
+  };
+
   return (
     <div>
       <section className="vh-100">
+        {status && <Notification msg={status.msg} type={status.type} />}
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">

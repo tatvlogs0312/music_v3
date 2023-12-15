@@ -1,15 +1,73 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Notification from "../../components/notification/Notification";
+import axios from "axios";
+
+const baseURL = "http://localhost:8080";
 
 function RegistrationPage() {
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+
+  const [status, setStatus] = useState(null);
+
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (
+      firstname !== "" &&
+      lastname !== "" &&
+      email !== "" &&
+      password !== "" &&
+      rePassword !== ""
+    ) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }, [firstname, lastname, email, password, rePassword]);
+
+  const register = () => {
+    if (password !== rePassword) {
+      console.log("p:" + password, "r:" + rePassword);
+      setStatus({
+        msg: "Mật khẩu không trùng khớp",
+        type: "error",
+      });
+    } else {
+      axios
+        .post(`${baseURL}/user/register`, {
+          email: email,
+          password: password,
+          firstName: firstname,
+          lastName: lastname,
+        })
+        .then((res) => {
+          setStatus({
+            msg: "Thành công, vui lòng kiểm tra hộp thư của bạn",
+            type: "success",
+          });
+        })
+        .catch((err) => {
+          setStatus({
+            msg: err.response.data.msg,
+            type: "error",
+          });
+        });
+
+      setTimeout(() => {
+        setStatus(null)
+      }, 5000)
+    }
+  };
 
   return (
     <div className="registration-page">
+      {status && <Notification msg={status.msg} type={status.type} />}
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
@@ -97,8 +155,8 @@ function RegistrationPage() {
                           id="form3Example4cd"
                           className="form-control"
                           required="required"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
+                          value={rePassword}
+                          onChange={(e) => setRePassword(e.target.value)}
                         />
                         <label className="form-label" for="form3Example4cd">
                           Repeat your password
@@ -106,7 +164,7 @@ function RegistrationPage() {
                       </div>
                     </div>
 
-                    <div className="form-check d-flex justify-content-center mb-5">
+                    {/* <div className="form-check d-flex justify-content-center mb-5">
                       <input
                         className="form-check-input me-2"
                         type="checkbox"
@@ -118,10 +176,15 @@ function RegistrationPage() {
                         I agree all statements in
                         <a href="#!">Terms of service</a>
                       </label>
-                    </div>
+                    </div> */}
 
                     <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="submit" className="btn btn-primary btn-lg">
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-lg"
+                        onClick={register}
+                        disabled={!show}
+                      >
                         Đăng ký
                       </button>
                     </div>

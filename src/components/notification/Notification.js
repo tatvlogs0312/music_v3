@@ -10,17 +10,15 @@ function Notification({ msg, type }) {
 
   const { vertical, horizontal, open } = state;
 
-  const handleClose = () => {
-    setState({ ...state, open: false });
-  };
-
   return (
     <Snackbar
       anchorOrigin={{ vertical, horizontal }}
       open={open}
-      onClose={handleClose}
+      style={{
+        width: "300px"
+      }}
     >
-      <Alert severity={type} sx={{ width: "100%" }} onClose={handleClose}>
+      <Alert severity={type} sx={{ width: "100%" }}>
         {msg}
       </Alert>
     </Snackbar>

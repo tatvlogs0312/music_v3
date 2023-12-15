@@ -11,8 +11,7 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState(null);
-  const navigate = useNavigate(); 
-
+  const navigate = useNavigate();
 
   const login = () => {
     axios
@@ -37,11 +36,11 @@ function LoginPage() {
       .catch((err) => {
         setErr(err.response.data.msg);
       });
-  };
 
-  setInterval(() => {
-    setErr(null);
-  }, 5000);
+    setTimeout(() => {
+      setErr(null);
+    }, 5000);
+  };
 
   return (
     <div className="login-page">
