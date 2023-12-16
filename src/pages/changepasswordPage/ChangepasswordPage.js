@@ -47,6 +47,7 @@ function ChangepasswordPage() {
 
   return (
     <div>
+
       <section className="vh-100">
         {status && <Notification msg={status.msg} type={status.type} />}
         <div className="container-fluid h-custom">
@@ -114,6 +115,7 @@ function ChangepasswordPage() {
           </div>
         </div>
       </section>
+      
     </div>
   );
 }
