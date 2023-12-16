@@ -1,0 +1,17 @@
+.warnning {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 30px;
+  color: #3eb2fd;
+  font-weight: 500;
+}
+
+.link {
+  display: flex;
+}

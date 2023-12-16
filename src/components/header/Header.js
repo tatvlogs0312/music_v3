@@ -28,12 +28,12 @@ function Header() {
     localStorage.removeItem("me");
     setIsAuth(false);
     navigate("/");
-  }
+  };
 
   const getAvatar = () => {
     const me = JSON.parse(localStorage.getItem("me"));
     return me.avatar;
-  }
+  };
 
   return (
     <div className="header">
@@ -57,12 +57,14 @@ function Header() {
             <Link to="/login">Đăng nhập</Link>
           </div>
         ) : (
-          <div style={{
-            marginRight: "10px",
-            cursor: "pointer",
-            backgroundColor: "white",
-            borderRadius: 50
-          }}>
+          <div
+            style={{
+              marginRight: "10px",
+              cursor: "pointer",
+              backgroundColor: "white",
+              borderRadius: 50,
+            }}
+          >
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
@@ -70,6 +72,9 @@ function Header() {
                     <Avatar src={`${baseURL}/file/avatar/${getAvatar}`} />
                   </div>
                   <Menu {...bindMenu(popupState)}>
+                    <MenuItem>
+                      <Link to={"/changepassword"}>Đổi mật khẩu</Link>
+                    </MenuItem>
                     <MenuItem onClick={logout}>Đăng xuất</MenuItem>
                   </Menu>
                 </React.Fragment>
