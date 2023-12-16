@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Notification from "../../components/notification/Notification";
 import axios from "axios";
 
@@ -11,6 +11,9 @@ function ChangepasswordPage() {
   const [newpassword, setNewPassword] = useState("");
   const [repairnewpassword, setRepairNewPassword] = useState("");
   const [status, setStatus] = useState(null);
+  const [disabled, setDisable] = useState(true);
+
+  const navigate = useNavigate();
 
   const change = () => {
     if (newpassword !== repairnewpassword) {
@@ -20,11 +23,12 @@ function ChangepasswordPage() {
       });
     } else {
       const user = JSON.parse(localStorage.getItem("me"));
+      console.log(user);
       axios
-        .put(`${baseURL}/user/forgot-password`, {
+        .put(`${baseURL}/user/change-password`, {
           oldPassword: password,
           newPassword: newpassword,
-          email: user.mail,
+          email: user.email,
         })
         .then((res) => {
           setStatus({
@@ -41,13 +45,21 @@ function ChangepasswordPage() {
 
       setTimeout(() => {
         setStatus(null);
-      }, 5000);
+        navigate("/login");
+      }, 1000);
     }
   };
 
+  useEffect(() => {
+    if (password !== "" && newpassword !== "" && repairnewpassword !== "") {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [password, newpassword, repairnewpassword]);
+
   return (
     <div>
-
       <section className="vh-100">
         {status && <Notification msg={status.msg} type={status.type} />}
         <div className="container-fluid h-custom">
@@ -107,7 +119,12 @@ function ChangepasswordPage() {
               </div>
 
               <div className="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" className="btn btn-primary btn-lg">
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg"
+                  onClick={change}
+                  disabled={disabled}
+                >
                   Đổi
                 </button>
               </div>
@@ -115,7 +132,6 @@ function ChangepasswordPage() {
           </div>
         </div>
       </section>
-      
     </div>
   );
 }

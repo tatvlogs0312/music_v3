@@ -29,8 +29,6 @@ export default function MusicPage() {
 
         setSongs([...songs, song]);
         setAlbums(res.data.albums);
-
-        console.log(song);
       })
       .catch((err) => console.log(err));
   }, [id]);

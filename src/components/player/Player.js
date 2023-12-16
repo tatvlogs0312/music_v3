@@ -25,12 +25,10 @@ export default function Player({ song, next, prev }) {
   };
 
   const updateListen = () => {
-    setTimeout(() => {
-      axios
-        .put(`${baseURL}/song/update-listen/${song.id}`)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    }, 30000);
+    axios
+      .put(`${baseURL}/song/update-listen/${song.id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   const handleTimeSliderChange = ({ x }) => {
@@ -65,8 +63,11 @@ export default function Player({ song, next, prev }) {
 
   useEffect(() => {
     setPlay(true);
-    updateListen();
-  }, []);
+    let timer = setTimeout(updateListen, 30000)
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [song.id]);
 
   useEffect(() => {
     if (localStorage.getItem("me") !== null) {
@@ -79,7 +80,7 @@ export default function Player({ song, next, prev }) {
         .then((res) => {})
         .catch((err) => console.log(err));
     }
-  }, []);
+  }, [song.id]);
 
   return (
     <div className="player">
